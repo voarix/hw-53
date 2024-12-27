@@ -34,6 +34,10 @@ const App: React.FC = () => {
         setTasks([...tasks, newTask]);
     };
 
+    const handleDeleteTask = (id: string) => {
+        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+    };
+
     return (
         <div>
             <h1>To-Do List</h1>
@@ -44,6 +48,7 @@ const App: React.FC = () => {
                     text={task.text}
                     completed={task.completed}
                     onToggle={() => handleToggle(task.id)}
+                    onDelete={() => handleDeleteTask(task.id)}
                 />
             ))}
         </div>
